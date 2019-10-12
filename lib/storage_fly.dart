@@ -1,12 +1,34 @@
 library storage_fly;
 
-// Import native items
-import 'package:universal_html/prefer_universal/html.dart';
+import 'dart:ui';
 
-// Import third libary packages
-import 'package:encrypt/encrypt.dart';
-import 'package:universal_html/prefer_universal/indexed_db.dart';
+import 'package:universal_html/prefer_universal/indexed_db.dart' as idb;
+import 'dart:html' as html;
 
-// Make part of project
-part 'src/services/database_init.dart';
-part 'src/services/impl/database_init_impl.dart';
+
+abstract class StorageFly {
+  
+  // Verify if the current browser
+  // support indexed db into your
+  // current configurations
+  bool isSupported;
+
+  Future openDatabase(String databaseName);
+
+
+
+}
+
+class StorageFlyImpl implements StorageFly {
+  
+  @override
+  bool isSupported = idb.IdbFactory.supported;
+
+  @override
+  Future openDatabase(String databaseName) {
+    return html.window.indexedDB.open(
+      "testDatabase", 1
+    );
+
+  }
+}
