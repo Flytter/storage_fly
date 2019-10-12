@@ -7,3 +7,4 @@ import 'dart:html';
 import 'package:encrypt/encrypt.dart';
 
 // Make part of project
+part 'src/services/open_database.dart';
