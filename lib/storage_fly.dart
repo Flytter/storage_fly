@@ -1,7 +1,9 @@
 library storage_fly;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+// Import native items
+import 'dart:html';
+
+// Import third libary packages
+import 'package:encrypt/encrypt.dart';
+
+// Make part of project

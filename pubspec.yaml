@@ -1,5 +1,5 @@
 name: storage_fly
-description: A new Flutter package project.
+description: Local web storage key value written in Dart and strongly encrypted to use in Flutter Web, based on indexed_db.
 version: 0.0.1
 author:
 homepage:
@@ -8,6 +8,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  encrypt: ^3.3.1
   flutter:
     sdk: flutter
 
