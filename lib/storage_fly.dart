@@ -1,10 +1,10 @@
 library storage_fly;
 
-import 'dart:ui';
-
-import 'package:universal_html/prefer_universal/indexed_db.dart' as idb;
 import 'dart:html' as html;
+import 'dart:indexed_db' as idb;
 
+import 'package:storage_fly/src/models/database_model.dart';
+import 'package:storage_fly/src/services/open_database_service.dart';
 
 abstract class StorageFly {
   
@@ -13,9 +13,7 @@ abstract class StorageFly {
   // current configurations
   bool isSupported;
 
-  Future openDatabase(String databaseName);
-
-
+  Future startDatabase(String databaseName, {int versionNumber});
 
 }
 
@@ -25,10 +23,6 @@ class StorageFlyImpl implements StorageFly {
   bool isSupported = idb.IdbFactory.supported;
 
   @override
-  Future openDatabase(String databaseName) {
-    return html.window.indexedDB.open(
-      "testDatabase", 1
-    );
-
-  }
+  Future startDatabase(String databaseName, {int versionNumber = 1}) =>
+        OpenDatabaseService().openDatabase(DatabaseModel(databaseName: databaseName, databaseVersion: versionNumber));
 }
